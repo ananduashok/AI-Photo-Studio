@@ -9,10 +9,10 @@ env/
 .venv/
 
 # Uploaded images
-static/uploads/
+static/uploads/*
 
 # Output images
-static/outputs/
+static/outputs/*
 
 # Model downloads (optional)
 .u2net/
@@ -32,3 +32,5 @@ Thumbs.db
 build/
 dist/
 *.egg-info/
+
+!.gitkeep
