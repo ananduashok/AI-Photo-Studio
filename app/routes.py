@@ -24,7 +24,8 @@ async def remove_bg(
     with open(input_path, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
 
-    output_path = os.path.join(OUTPUT_DIR, file_id + "_processed.png")
+    output_filename = file_id + "_processed.png"
+    output_path = os.path.join(OUTPUT_DIR, output_filename)
 
     remove_background_with_color(
         input_path,
@@ -34,5 +35,5 @@ async def remove_bg(
 
     return {
         "message": "Image processed",
-        "output": output_path
+        "image_url": f"/static/outputs/{output_filename}"
     }
