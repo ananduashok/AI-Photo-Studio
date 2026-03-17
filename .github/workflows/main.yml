@@ -1,0 +1,36 @@
+name: Test AI Photo Studio
+
+on:
+  workflow_dispatch:        # manual trigger only
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Show installed packages
+        run: pip list
+
+      - name: Check app structure
+        run: |
+          echo "--- Repo structure ---"
+          find . -type f -name "*.py" | sort
+
+      - name: Start app and verify it runs
+        run: |
+          uvicorn app.main:app --host 0.0.0.0 --port 8000 &
+          sleep 5
+          curl -f http://localhost:8000 && echo "✅ App is UP" || echo "❌ App failed to start"
