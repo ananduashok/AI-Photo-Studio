@@ -66,7 +66,7 @@ AI-Photo-Studio/
 Clone the repository:
 
 ```
-git clone https://github.com/yourusername/AI-Photo-Studio.git
+git clone https://github.com/ananduashok/AI-Photo-Studio.git
 cd AI-Photo-Studio
 ```
 
